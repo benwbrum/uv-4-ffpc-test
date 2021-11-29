@@ -1,0 +1,9 @@
+{
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    "id": "https://example.com/collection.json",
+    "type": "Collection",
+    "label": { "en": [ "Furious Flower Poetry Center Overview Part 1 (2011)" ] },
+    "summary": { "en": [ "Joanne Gabbin conducts a \"masters class\" on the history of Furious Flower Poetry Center at James Madison University in 2011." ] },
+    "items": [
+    ]
+}
