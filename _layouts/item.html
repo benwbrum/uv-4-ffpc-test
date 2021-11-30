@@ -13,18 +13,41 @@ layout: page
   <div id="uv" {%- if format == "Audio" or format == "Sound" -%} class="uv uv-audio sticky" {%- else -%} class="uv uv-video sticky" {%- endif -%}  ></div>
 {% endif %}
 
-<script src="{{ site.baseurl }}/assets/uv/UV.js"></script>
-<script src="{{ site.baseurl }}/assets/datatables/datatables.min.js"></script>
-<script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/universalviewer@next/dist/uv.css"
+  />
+  <script
+    type="application/javascript"
+    src="https://cdn.jsdelivr.net/npm/universalviewer@next/dist/umd/UV.js"
+  ></script>
+  <script src="{{ site.baseurl }}/assets/datatables/datatables.min.js"></script>
+  <script>
     var myUV;
 
     myUV = UV.init('uv', {
         manifestUri: '{{site.data[page.manifest_name].manifest.id}}',
         manifest: '{{site.data[page.manifest_name].manifest.id}}',
-        configUri: '{{ site.baseurl }}/assets/uv-config.json',
         root: '../../{{ site.baseurl }}/assets/uv/umd'
     });
 
+
+
+      // override config using an inline json object
+      myUV.on("configure", function ({ config, cb }) {
+        cb({
+            "options": {
+              "dropEnabled": true,
+              "footerPanelEnabled": false,
+              "headerPanelEnabled": false,
+              "leftPanelEnabled": false,
+              "limitLocales": false,
+              "overrideFullScreen": false,
+              "pagingEnabled": false,
+              "rightPanelEnabled": false
+             }
+        });
+      });
 </script>
 
 <table id="annotation-table"  class="table table-bordered table-dark">
